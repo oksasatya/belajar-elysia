@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Use PostgreSQL via env DATABASE_URL
+// Example: postgresql://postgres:postgres@localhost:5432/belajar_elysia?schema=public
+// The .env file will provide DATABASE_URL.
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
